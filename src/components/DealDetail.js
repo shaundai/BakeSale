@@ -57,20 +57,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(237, 149, 45, 0.4)',
     },
     textcontainer: {
-        width: '90%',
         alignSelf: 'center',
-        borderColor: '#bbb',
-        borderWidth: 1,
-        borderTopWidth: 0,
         padding: 10,
         paddingTop: 15,
         paddingBottom: 5,
         backgroundColor: '#fff',
     },
     image: {
-        width: '90%',
+        width: '100%',
         height: 150,
-        alignSelf: 'center',
         backgroundColor: '#ccc',
     },
     footer: {
@@ -81,14 +76,17 @@ const styles = StyleSheet.create({
     },
     price: {
         fontSize: 17,
+        fontWeight: 'bold',
     },
     cause: {
         fontSize: 17,
+        fontWeight: 'bold',
     },
     avatar: {
         width: 60,
         height: 60,
         borderRadius: 30,
+        marginTop: 15,
     },
     description: {
         borderColor: '#ddd',
