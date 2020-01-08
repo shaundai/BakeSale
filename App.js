@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import ajax from './src/components/ajax';
 import DealList from './src/components/DealList';
 import DealDetail from './src/components/DealDetail';
+import SearchBar from './src/components/SearchBar';
 
 class App extends React.Component {
   state = {
@@ -20,6 +21,12 @@ class App extends React.Component {
     })
   }
 
+  unsetCurrentDeal = () => {
+    this.setState({
+      currentDealId: null
+    })
+  }
+
   currentDeal = () => {
     return this.state.deals.find(
       (deal) => deal.key === this.state.currentDealId
@@ -28,10 +35,19 @@ class App extends React.Component {
 
 render(){
   if (this.state.currentDealId){
-    return <DealDetail initialDealData={this.currentDeal()}/>
-  }
+    return (
+      <View style={styles.main}>
+        <DealDetail initialDealData={this.currentDeal()} onBack={this.unsetCurrentDeal}/>
+        </View>
+    )
+}
   if (this.state.deals.length > 0){
-    return  <DealList deals={this.state.deals} onItemPress={this.setCurrentDeal} />
+    return ( 
+    <View style={styles.main}>
+      <SearchBar/>
+        <DealList deals={this.state.deals} onItemPress={this.setCurrentDeal} />
+    </View>
+    )
   }
   return (
     <View style={styles.container}>
@@ -50,6 +66,9 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 40,
+  },
+  main: {
+   marginTop: 50, 
   }
 });
 

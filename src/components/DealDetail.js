@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import ajax from './ajax'
 
@@ -8,6 +8,7 @@ import { priceDisplay} from '../util';
 class DealDetail extends React.Component {
     static propTypes = {
         deal: PropTypes.object.isRequired,
+        onBack: PropTypes.func.isRequired,
     }
     state = {
         deal: this.props.initialDealData,
@@ -22,6 +23,9 @@ class DealDetail extends React.Component {
         const { deal } = this.state;
         return (
             <View style={styles.itemcontainer}>
+                <TouchableOpacity onPress={this.props.onBack}>
+                    <Text style={styles.backlink}>Back</Text>
+                </TouchableOpacity>
                 <Image style={styles.image} source={{ uri: deal.media[0] }} />
             <View style={styles.textcontainer}>
                 <Text style={styles.title}>{deal.title}</Text>
@@ -47,7 +51,6 @@ const styles = StyleSheet.create({
         width: '100%',
         borderColor: 'black',
         marginBottom: 10,
-        marginTop: 60,
     },
     title: {
         fontWeight: '700',
@@ -55,6 +58,12 @@ const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 5,
         backgroundColor: 'rgba(237, 149, 45, 0.4)',
+    },
+    backlink: {
+        marginBottom: 5,
+        marginRight: 15,
+        color: '#22f',
+        alignSelf: 'flex-end',
     },
     textcontainer: {
         alignSelf: 'center',
