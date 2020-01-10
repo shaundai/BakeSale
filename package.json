@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "expo": "~36.0.0",
+    "lodash.debounce": "^4.0.8",
     "react": "~16.9.0",
     "react-devtools": "^3.6.3",
     "react-dom": "~16.9.0",

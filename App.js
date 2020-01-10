@@ -8,6 +8,7 @@ import SearchBar from './src/components/SearchBar';
 class App extends React.Component {
   state = {
     deals: [],
+    dealsFromSearch: [],
     currentDealId: null,
   }
 
@@ -15,6 +16,15 @@ class App extends React.Component {
     const deals = await ajax.fetchInitialDeals();
     this.setState({ deals });
   }
+
+  searchDeals = async (searchTerm) => {
+    let dealsFromSearch = [];
+    if(searchTerm) {
+      dealsFromSearch = await ajax.fetchDealsSearchResults(searchTerm);
+    this.setState({ dealsFromSearch });
+  }
+}
+
   setCurrentDeal = (dealId) => {
     this.setState({
       currentDealId: dealId
@@ -41,11 +51,15 @@ render(){
         </View>
     )
 }
-  if (this.state.deals.length > 0){
+const dealsToDisplay = this.state.dealsFromSearch.length > 0
+? this.state.dealsFromSearch
+: this.state.deals;
+
+  if (dealsToDisplay.length > 0){
     return ( 
     <View style={styles.main}>
-      <SearchBar/>
-        <DealList deals={this.state.deals} onItemPress={this.setCurrentDeal} />
+      <SearchBar searchDeals={this.searchDeals} />
+        <DealList deals={dealsToDisplay} onItemPress={this.setCurrentDeal} />
     </View>
     )
   }

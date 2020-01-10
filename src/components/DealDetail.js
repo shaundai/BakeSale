@@ -3,11 +3,11 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import ajax from './ajax'
 
-import { priceDisplay} from '../util';
+import { priceDisplay } from '../util';
 
 class DealDetail extends React.Component {
     static propTypes = {
-        deal: PropTypes.object.isRequired,
+        deal: PropTypes.object,
         onBack: PropTypes.func.isRequired,
     }
     state = {
