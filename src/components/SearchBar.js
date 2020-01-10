@@ -18,6 +18,7 @@ class SearchBar extends React.Component {
         this.setState({ searchTerm }, () => {
             this.debouncedSearchDeals(this.state.searchTerm);
         });
+        console.log(searchTerm)
     }
 
     render(){

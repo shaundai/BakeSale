@@ -49,9 +49,9 @@ class DealDetail extends React.Component {
 const styles = StyleSheet.create({
     itemcontainer: {
         width: '100%',
-        borderColor: 'black',
         marginBottom: 10,
     },
+    
     title: {
         fontWeight: '700',
         fontSize: 20,
@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
     },
     textcontainer: {
         alignSelf: 'center',
-        padding: 10,
         paddingTop: 15,
         paddingBottom: 5,
         backgroundColor: '#fff',
@@ -98,9 +97,6 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     description: {
-        borderColor: '#ddd',
-        borderWidth: 1,
-        borderStyle: 'dotted',
         margin: 10,
         padding: 10, 
     },
