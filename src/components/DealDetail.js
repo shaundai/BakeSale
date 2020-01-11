@@ -33,14 +33,15 @@ class DealDetail extends React.Component {
                 <Text style={styles.cause}>{deal.cause.name}</Text>
                 <Text style={styles.price}>{priceDisplay(deal.price)}</Text>
             </View>
+            <View>
+                <Text style={styles.description}>{deal.description}</Text>
+            </View>
             </View>
             {deal.user && (<View style={styles.user}>
                 <Image source={{ uri: deal.user.avatar}} style={styles.avatar}/>
                 <Text>{deal.user.name}</Text>
             </View>)}
-            <View>
-                <Text style={styles.description}>{deal.description}</Text>
-            </View>
+
             </View>
         )
     }
@@ -67,7 +68,6 @@ const styles = StyleSheet.create({
     },
     textcontainer: {
         alignSelf: 'center',
-        paddingTop: 15,
         paddingBottom: 5,
         backgroundColor: '#fff',
     },
@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginTop: 15,
         marginBottom: 10,
+        marginHorizontal: 30,
     },
     price: {
         fontSize: 17,
