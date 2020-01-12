@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, PanResponder, Animated, Dimensions } from 'react-native';
+import { StyleSheet, Button, Text, View, Image, TouchableOpacity, PanResponder, Animated, Dimensions, Linking } from 'react-native';
 import PropTypes from 'prop-types';
 import ajax from './ajax'
 
@@ -61,6 +61,11 @@ class DealDetail extends React.Component {
             deal: fullDeal,
         })
     }
+
+    openDealUrl = () => {
+        Linking.openURL(this.state.deal.url)
+    }
+    
     render(){
         const { deal } = this.state;
         return (
@@ -82,6 +87,7 @@ class DealDetail extends React.Component {
             <View>
                 <Text style={styles.description}>{deal.description}</Text>
             </View>
+            <Button title="Buy this Deal" onPress={this.openDealUrl} />
             </View>
             {deal.user && (<View style={styles.user}>
                 <Image source={{ uri: deal.user.avatar}} style={styles.avatar}/>
